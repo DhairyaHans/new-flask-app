@@ -1,0 +1,132 @@
+{% extends "layout.html" %}
+{% block body %}
+
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+    
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="/register">Registration</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                    <!-- <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/">Home</a></li> -->
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/employee">Other Employees</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/detailsAdmin">My Details</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/logout">Log out</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+
+    <!-- ---------------------- -->
+
+
+
+    <!-- old code -->
+    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+
+
+                    <!-- -----------ALERT POP UP------------ -->
+                    <nav class="navbar-expand-md navbar-light">
+                        {% with messages = get_flashed_messages(with_categories = true) %}
+                            {% if messages %}
+                                {% for category,message in messages %}
+                                    <div class="alert alert-warning" style="font-size: 11px;">
+                                        {{ message }}
+                                        <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                    </nav>
+                    <!-- ----------------------------------- -->
+
+
+                    <h2 class="title">Registration Form</h2>
+
+
+                    <!-- ############################################## -->
+                    <!-- ---------------NEW FORM --------------->
+                    <form method="POST">
+                        {{ form.csrf_token }}
+                        <div class="row row-space">
+                            <div class="col-6">
+                                <div class="input-group">
+                                    {{ form.firstname.label(class="label") }}
+                                    {{ form.firstname(class="input--style-4") }}
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="input-group">
+                                    {{ form.lastname.label(class="label") }}
+                                    {{ form.lastname(class="input--style-4") }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-6">
+                                <div class="input-group">
+                                    <label class="label">Date of Birth</label>
+                                    <div class="input-group-icon">
+                                        <input class="input--style-4 js-datepicker" type="text" name="birthday">
+                                        <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="input-group">
+                                    <label class="label">Gender</label>
+                                    <div class="p-t-10">
+                                        <label class="radio-container m-r-45">Male
+                                            <input type="radio" checked="checked" name="gender" value="male">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="radio-container">Female
+                                            <input type="radio" name="gender" value="female">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-6">
+                                <div class="input-group">
+                                    {{ form.email.label(class="label") }}
+                                    {{ form.email(class="input--style-4") }}
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="input-group">
+                                    {{ form.phone.label(class="label") }}
+                                    {{ form.phone(class="input--style-4") }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="input-group">
+                                {{ form.address.label(class="label") }}
+                                {{ form.address(class="input--style-4") }}
+                            </div>
+                        </div>
+                        <div class="p-t-15">
+                            {{ form.submit(class="form-control btn btn-primary rounded submit px-3") }}
+                        </div>
+                    </form>
+
+                    <!-- ############################################## -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+ {% endblock %}

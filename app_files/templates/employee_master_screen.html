@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+{% block body %}
+
+    <!-- extraaaaaaaas -->
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+    
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="/employee">Employee Details</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/register">Register</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/detailsAdmin">My Details</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/logout">Log out</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ---------------------- -->
+    <!-- Main Old code -->
+    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+
+                     <!-- -----------ALERT POP UP------------ -->
+                     <nav class="navbar-expand-md navbar-light">
+                        {% with messages = get_flashed_messages(with_categories = true) %}
+                            {% if messages %}
+                                {% for category,message in messages %}
+                                    <div class="alert alert-warning" style="font-size: 11px;">
+                                        {{ message }}
+                                        <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                    </nav>
+                    <!-- ----------------------------------- -->
+
+                    <!-- ---------------------------- -->
+                    <!-- SEARCH BAR -->
+                    <form method="POST">
+                        <div class="row row-space">
+                            <div class="input-group">
+                                <div class="col-3">
+                                    <input class="input--style-4" type="text" placeholder="firstname" name="firstname">
+                                </div>
+                                <div class="col-3">
+                                    <input class="input--style-4" type="text" placeholder="lastname" name="lastname">
+                                </div>
+                                <div class="col-5">
+                                    <input class="input--style-4" type="text" placeholder="email id" name="email">
+                                </div>
+                                <div class="col-1">
+                                    <input class="form-control btn btn-primary rounded submit px-1" style="font-size: 9px;" type="submit" value="Search"> 
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <br>
+                    <br>
+
+                    <div class="row row-space">
+                        <div class="col-4" style="border : 1px solid gray; border-top-left-radius: 10px; background-color: rgba(0,0,0,0.1);">
+                            <label class="label">First Name</label>
+                        </div>
+                        <div class="col-4" style="border : 1px solid gray; background-color: rgba(0,0,0,0.1);">
+                            <label class="label">Last Name</label>
+                        </div>
+                        <div class="col-4" style="border : 1px solid gray; border-top-right-radius: 10px; background-color: rgba(0,0,0,0.1);">
+                            <label class="label">E-mail ID</label>
+                        </div>
+                    </div>
+                    <!-- Table body  -->
+                    {% for res in details %}
+                    <div class="row row-space">
+                        <div class="col-4" style="border : 1px solid gray;">
+                            <p>{{ res.firstname }}</p>
+                        </div>
+                        <div class="col-4" style="border : 1px solid gray;">
+                            <p>{{ res.lastname }}</p>
+                        </div>
+                        <div class="col-4" style="border : 1px solid gray;">
+                            <p>{{ res.email }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}

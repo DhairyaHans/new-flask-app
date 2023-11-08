@@ -1,0 +1,15 @@
+{
+    "params":
+    {
+        "admin_email": "admin@abc.com",
+        "admin_pass": "123456789",
+        "admin_designation": "admin",
+        "admin_fname": "Tony",
+        "admin_lname": "Stark",
+        "admin_gender": "male",
+        "admin_dob": "04/05/2023",
+        "admin_phone_no": "1234567890",
+        "admin_address": "Stark Tower, Washington DC"
+
+    }
+}
